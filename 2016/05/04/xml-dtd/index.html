@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>XML --dtd相关知识 | ChenDiDi&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="DTD简介DTD是一套关于标记的语法规则，它定义了文档的逻辑结构，规定了文档中所使用的元素、实体、元素的属性、元素与实体之间的关系。DTD告诉你可以在哪些文档中使用哪些标记，各标记出现的次序，哪些标记出现在哪些标记中，哪些标记有属性等等。DTD是XML文件的验证机制，定义好DTD，就可以使用XML解析器对编写好的XML文档进行DTD检查，判断XML文档内容是否为有效的XML文档内容。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XML --dtd相关知识">
+<meta property="og:url" content="http://chendidi.rocks/2016/05/04/xml-dtd/index.html">
+<meta property="og:site_name" content="ChenDiDi's Blog">
+<meta property="og:description" content="DTD简介DTD是一套关于标记的语法规则，它定义了文档的逻辑结构，规定了文档中所使用的元素、实体、元素的属性、元素与实体之间的关系。DTD告诉你可以在哪些文档中使用哪些标记，各标记出现的次序，哪些标记出现在哪些标记中，哪些标记有属性等等。DTD是XML文件的验证机制，定义好DTD，就可以使用XML解析器对编写好的XML文档进行DTD检查，判断XML文档内容是否为有效的XML文档内容。">
+<meta property="og:updated_time" content="2016-05-04T09:01:15.872Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="XML --dtd相关知识">
+<meta name="twitter:description" content="DTD简介DTD是一套关于标记的语法规则，它定义了文档的逻辑结构，规定了文档中所使用的元素、实体、元素的属性、元素与实体之间的关系。DTD告诉你可以在哪些文档中使用哪些标记，各标记出现的次序，哪些标记出现在哪些标记中，哪些标记有属性等等。DTD是XML文件的验证机制，定义好DTD，就可以使用XML解析器对编写好的XML文档进行DTD检查，判断XML文档内容是否为有效的XML文档内容。">
+  
+    <link rel="alternative" href="/atom.xml" title="ChenDiDi&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/">ChenDiDi</a></h1>
+        </hgroup>
+
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="search" placeholder=" Search...">
+            </form>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/Home/index.html">博客首页</a></li>
+                        
+                            <li><a href="/works">作品展示</a></li>
+                        
+                            <li><a href="/about">留言打卡</a></li>
+                        
+                            <li><a href="/FrontEndGuide">前端导航</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="#" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/x464744246" title="github">github</a>
+                            
+                                <a class="fl zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+                            
+                                <a class="fl weibo" target="_blank" href="#" title="weibo">weibo</a>
+                            
+                                <a class="fl google" target="_blank" href="#" title="google">google</a>
+                            
+                                <a class="fl twitter" target="_blank" href="#" title="twitter">twitter</a>
+                            
+                                <a class="fl facebook" target="_blank" href="#" title="facebook">facebook</a>
+                            
+                                <a class="fl steam" target="_blank" href="http://steamcommunity.com/id/wojiushiyaopapapa/" title="steam">steam</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaEE/" style="font-size: 10px;">JavaEE</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/xml/" style="font-size: 10px;">xml</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://lilpilot.co/">飞行员不会飞</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">爱运动、cs选手~</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">ChenDiDi</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">ChenDiDi</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/Home/index.html">博客首页</a></li>
+                
+                    <li><a href="/works">作品展示</a></li>
+                
+                    <li><a href="/about">留言打卡</a></li>
+                
+                    <li><a href="/FrontEndGuide">前端导航</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="#" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/x464744246" title="github">github</a>
+                    
+                        <a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+                    
+                        <a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+                    
+                        <a class="google" target="_blank" href="#" title="google">google</a>
+                    
+                        <a class="twitter" target="_blank" href="#" title="twitter">twitter</a>
+                    
+                        <a class="facebook" target="_blank" href="#" title="facebook">facebook</a>
+                    
+                        <a class="steam" target="_blank" href="http://steamcommunity.com/id/wojiushiyaopapapa/" title="steam">steam</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-xml-dtd" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/04/xml-dtd/" class="article-date">
+      <time datetime="2016-05-04T08:42:34.000Z" itemprop="datePublished">2016-05-04</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      XML --dtd相关知识
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/dtd/">dtd</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xml/">xml</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="DTD简介"><a href="#DTD简介" class="headerlink" title="DTD简介"></a>DTD简介</h3><h3 id="DTD是一套关于标记的语法规则，它定义了文档的逻辑结构，规定了文档中所使用的元素、实体、元素的属性、元素与实体之间的关系。DTD告诉你可以在哪些文档中使用哪些标记，各标记出现的次序，哪些标记出现在哪些标记中，哪些标记有属性等等。DTD是XML文件的验证机制，定义好DTD，就可以使用XML解析器对编写好的XML文档进行DTD检查，判断XML文档内容是否为有效的XML文档内容。"><a href="#DTD是一套关于标记的语法规则，它定义了文档的逻辑结构，规定了文档中所使用的元素、实体、元素的属性、元素与实体之间的关系。DTD告诉你可以在哪些文档中使用哪些标记，各标记出现的次序，哪些标记出现在哪些标记中，哪些标记有属性等等。DTD是XML文件的验证机制，定义好DTD，就可以使用XML解析器对编写好的XML文档进行DTD检查，判断XML文档内容是否为有效的XML文档内容。" class="headerlink" title="DTD是一套关于标记的语法规则，它定义了文档的逻辑结构，规定了文档中所使用的元素、实体、元素的属性、元素与实体之间的关系。DTD告诉你可以在哪些文档中使用哪些标记，各标记出现的次序，哪些标记出现在哪些标记中，哪些标记有属性等等。DTD是XML文件的验证机制，定义好DTD，就可以使用XML解析器对编写好的XML文档进行DTD检查，判断XML文档内容是否为有效的XML文档内容。"></a>DTD是一套关于标记的语法规则，它定义了文档的逻辑结构，规定了文档中所使用的元素、实体、元素的属性、元素与实体之间的关系。DTD告诉你可以在哪些文档中使用哪些标记，各标记出现的次序，哪些标记出现在哪些标记中，哪些标记有属性等等。DTD是XML文件的验证机制，定义好DTD，就可以使用XML解析器对编写好的XML文档进行DTD检查，判断XML文档内容是否为有效的XML文档内容。</h3> <a id="more"></a>
+<h3 id="为什么使用DTD？"><a href="#为什么使用DTD？" class="headerlink" title="为什么使用DTD？"></a>为什么使用DTD？</h3><ol>
+<li>验证接收到的数据是否有效</li>
+<li>用于验证自己的数据</li>
+<li>定义 XML 文档的合法构建块</li>
+<li>使用一系列合法元素来定义文档结构</li>
+</ol>
+<h3 id="使用DTD的好处"><a href="#使用DTD的好处" class="headerlink" title="使用DTD的好处"></a>使用DTD的好处</h3><p>用DTD提供统一格式。例如，用DTD规定个人简历文档的逻辑结构，包括所需填写内容和内容排列方式，所有按照这个DTD编写的个人简历都将具有统一格式。用DTD验证数据有效性。DTD约束文档逻辑结构，可以根据DTD检查数据，验证其是否符合规定要求，确保数据正确和有效。根据DTD编写文档样式单。DTD能在不提供原始资料的情况下，表示出一个网页或文档的架构元素，这意味着用户能先根据DTD为未来的文档编写样式单，然后再安全且不破坏结构的把用户的资料放上去，提高工作效率。引入DTD使用DTD定义了合法的语义约束后，必须让XML文档引入该语义约束，以表明该XML文档遵守哪种语义约束。在XML文档中引入DTD主要有3种方式：</p>
+<p> 内部DTD</p>
+<p> 外部DTD</p>
+<p> 公用DTD</p>
+<h3 id="内部DTD"><a href="#内部DTD" class="headerlink" title="内部DTD"></a>内部DTD</h3><p>所谓内部DTD是指DTD与XML数据定义放在同一份文档中，即将DTD定义在XML文档内部。内部DTD紧跟在XML声明和处理指令之间。文档类型声明以“&lt;!DOCTYPE&gt;” 开始，以“]&gt;”结束。在XML处理指令和根元素之间定义。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt; ? xml version=”1.0” encoding=”GB2312” standalone=”yes” ?&gt;</span><br><span class="line"></span><br><span class="line">&lt;! DOCTYPE 根元素名称 [</span><br><span class="line"></span><br><span class="line">   &lt;! ELEMENT  子元素名称 (<span class="comment">#PDATA)&gt;</span></span><br><span class="line"></span><br><span class="line">]&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="内部DTD实例："><a href="#内部DTD实例：" class="headerlink" title="内部DTD实例："></a>内部DTD实例：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;?xml version=<span class="string">"1.0“  standalone=“yes” ?&gt;</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE note [</span><br><span class="line"></span><br><span class="line">  &lt;!ELEMENT note (to,from,heading,body)&gt;</span><br><span class="line"></span><br><span class="line">  &lt;!ELEMENT to      (#PCDATA)&gt;</span><br><span class="line"></span><br><span class="line">  &lt;!ELEMENT from    (#PCDATA)&gt;</span><br><span class="line"></span><br><span class="line">  &lt;!ELEMENT heading (#PCDATA)&gt;</span><br><span class="line"></span><br><span class="line">  &lt;!ELEMENT body    (#PCDATA)&gt;</span><br><span class="line"></span><br><span class="line">]&gt;</span><br><span class="line"></span><br><span class="line">&lt;note&gt;</span><br><span class="line"></span><br><span class="line">  &lt;to&gt;George&lt;/to&gt;</span><br><span class="line"></span><br><span class="line">  &lt;from&gt;John&lt;/from&gt;</span><br><span class="line"></span><br><span class="line">  &lt;heading&gt;Reminder&lt;/heading&gt;</span><br><span class="line"></span><br><span class="line">  &lt;body&gt;Don't forget the meeting!&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/note&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="外部DTD"><a href="#外部DTD" class="headerlink" title="外部DTD"></a>外部DTD</h3><p>外部文件类型定义存在于独立文件中，文件扩展名为“.dtd”。外部DTD的好处是：可以方便地被多个XML文档共享，只需要定义一份DTD文档，即可为多个XML文档定义语义约束。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE  根元素名  SYSTEM <span class="string">" DTD-URL "</span>&gt;</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE  Book  SYSTEM  “http://www.crazyit.org/dtd/book.dtd”&gt;</span><br><span class="line"></span><br><span class="line">System :关键字，指该外部DTD是私有的</span><br><span class="line"></span><br><span class="line">DTD-URL：通过URL将外部DTD引用到XML文档中，可以是绝对地址也是可相对地址</span><br></pre></td></tr></table></figure>
+<h3 id="外部DTD实例"><a href="#外部DTD实例" class="headerlink" title="外部DTD实例:"></a>外部DTD实例:</h3><h3 id="创建："><a href="#创建：" class="headerlink" title="创建："></a>创建：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0“ encoding=“utf-8”?&gt;</span><br><span class="line"></span><br><span class="line">&lt;!ELEMENT note (to,from,heading,body)&gt;</span><br><span class="line"></span><br><span class="line">&lt;!ELEMENT to (#PCDATA)&gt;</span><br><span class="line"></span><br><span class="line">&lt;!ELEMENT from (#PCDATA)&gt;</span><br><span class="line"></span><br><span class="line">&lt;!ELEMENT heading (#PCDATA)&gt;</span><br><span class="line"></span><br><span class="line">&lt;!ELEMENT body (#PCDATA)&gt;　　　　　　　　　　</span><br><span class="line"></span><br><span class="line">引用：</span><br><span class="line"></span><br><span class="line">&lt;?xml version="</span>1.0“  standlone=“no”?&gt;</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE note SYSTEM <span class="string">"note.dtd"</span>&gt;</span><br><span class="line"></span><br><span class="line">&lt;note&gt;</span><br><span class="line"></span><br><span class="line">&lt;to&gt;George&lt;/to&gt;</span><br><span class="line"></span><br><span class="line">&lt;from&gt;John&lt;/from&gt;</span><br><span class="line"></span><br><span class="line">&lt;heading&gt;Reminder&lt;/heading&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;Don<span class="string">'t forget the meeting!&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/note&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="注意：为了让DTD能支持非西欧字符，应该为外部DTD文档指定声明，DTD声明和XML声明的语法完全相同。"><a href="#注意：为了让DTD能支持非西欧字符，应该为外部DTD文档指定声明，DTD声明和XML声明的语法完全相同。" class="headerlink" title="注意：为了让DTD能支持非西欧字符，应该为外部DTD文档指定声明，DTD声明和XML声明的语法完全相同。　　　　　　　　　　"></a>注意：为了让DTD能支持非西欧字符，应该为外部DTD文档指定声明，DTD声明和XML声明的语法完全相同。　　　　　　　　　　</h3><h3 id="公用DTD"><a href="#公用DTD" class="headerlink" title="公用DTD"></a>公用DTD</h3><h3 id="有一种外部DTD，是由某个权威机构制定，供特定行业或公司，这种DTD又被称为公用DTD。"><a href="#有一种外部DTD，是由某个权威机构制定，供特定行业或公司，这种DTD又被称为公用DTD。" class="headerlink" title="有一种外部DTD，是由某个权威机构制定，供特定行业或公司，这种DTD又被称为公用DTD。"></a>有一种外部DTD，是由某个权威机构制定，供特定行业或公司，这种DTD又被称为公用DTD。</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE  根元素名  PUBLIC  <span class="string">" DTD-NAME “  “DTD-URL”&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="注：公用DTD与外部DTD区别在于：公用DTD使用PUBLIC代替了原来的SYSTEM，并增加了DTD标识名。"><a href="#注：公用DTD与外部DTD区别在于：公用DTD使用PUBLIC代替了原来的SYSTEM，并增加了DTD标识名。" class="headerlink" title="注：公用DTD与外部DTD区别在于：公用DTD使用PUBLIC代替了原来的SYSTEM，并增加了DTD标识名。"></a>注：公用DTD与外部DTD区别在于：公用DTD使用PUBLIC代替了原来的SYSTEM，并增加了DTD标识名。</h3><h3 id="DTD文档的结构"><a href="#DTD文档的结构" class="headerlink" title="DTD文档的结构"></a>DTD文档的结构</h3><p>  DTD文档并不是XML文档，而只是为XML定义语义约束的文档。DTD文档有如下结构：</p>
+<p> 第1行是DTD声明部分，该声明与XML声明的语法相同</p>
+<p> 0到多个注释部分，DTD注释与XML注释的语法完全相同</p>
+<p> 0到多个&lt;!ELEMENT….&gt;定义，每个&lt;!ELEMENT….&gt;定义一个XML元素</p>
+<p> 0到多个&lt;!ATTLIST….&gt;定义，每个&lt;!ATTLIST….&gt;定义一个XML元素定义了一个属性</p>
+<p> 0到多个&lt;!ENTITY….&gt;定义，每个&lt;!ENTITY….&gt;定义一个实体</p>
+<p> 0到多个&lt;!NOTATION….&gt;定义，每个&lt;!NOTATION….&gt;定义一个符号</p>
+<h3 id="DTD对元素声明【重点掌握】"><a href="#DTD对元素声明【重点掌握】" class="headerlink" title="DTD对元素声明【重点掌握】"></a>DTD对元素声明【重点掌握】</h3><p> 使用ELEMENT声明XML元素的语法,语法格式如下:</p>
+<p>&lt;!ELEMENT    元素名   元素内容&gt;</p>
+<p>元素声明以“&lt;!”开始,以“&gt;”结束</p>
+<p>元素声明指令“ELEMENT”为关键字,必须大写</p>
+<p>元素名:为当前元素指定的元素名称</p>
+<p>元素内容: 元素名后面的内容用来指定元素的内容类型,它可以分为EMPTY(空)、子元素类型，混合型、ANY（任意）和#PCDATA 5种类型。</p>
+<p>空元素类型—EMPTY</p>
+<p>该元素只可能有属性不能有元素内容。声明的</p>
+<p>空元素的语法如下：</p>
+<p>&lt;!ELEMENT     元素名     EMPTY&gt;</p>
+<h3 id="定义任意类型的元素："><a href="#定义任意类型的元素：" class="headerlink" title="定义任意类型的元素："></a>定义任意类型的元素：</h3><pre><code>ANY是DTD中使用很频繁的一个关键字，特别是对于文档根元素的声明。在定义一个DTD文档时通常很难准确地确定一个元素是否具有子元素的情况，此时一般的做法是指定该元素的子元素为ANY型(表示可以是任意的元素)，这样在它之中可以包含任何数据、何声明的子元素及其数据和子元素的组合。如果需要定义某个元素的值可以是任意类型。声明的语法如下：
+</code></pre><p>&lt;!ELEMENT   元素名   ANY&gt;</p>
+<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><p>DTD必须定义XML文档中允许出现的所有元素。由此可见，虽然XML文档允许开发者自由扩展各种标签，但一旦使用DTD为其增加了语义约束，该XML文档就只能出现在DTD中定义过的元素。</p>
+<p>定义字符串内容的元素</p>
+<h3 id="定义只能是字符串的元素的语法格式如下"><a href="#定义只能是字符串的元素的语法格式如下" class="headerlink" title="定义只能是字符串的元素的语法格式如下"></a>定义只能是字符串的元素的语法格式如下</h3><p>&lt;!ELEMENT   元素名   #PCDATA&gt;</p>
+<h3 id="定义混合内容元素"><a href="#定义混合内容元素" class="headerlink" title="定义混合内容元素"></a>定义混合内容元素</h3><pre><code>某个元素既有字符串内容，又包含子元素，被称为混合内容的元素。一般来说，XML文档不推荐使用混合内容的元素。
+</code></pre><p>&lt;!ELEMENT 父元素名 （#PCDATA|子元素1|子元素2|子元素3…..）*&gt;</p>
+<h3 id="注意：-1"><a href="#注意：-1" class="headerlink" title="注意："></a>注意：</h3><p> #PCDATA必须放在最前面</p>
+<p> #PCDATA和各子元素之间只能用竖线（|）分割</p>
+<p>子元素1，子元素2和子元素3之间的竖线（|）并不是表示互斥，而只是表  示这些元素能无序的重复出现，而且次数不受限制</p>
+<p>不要试图在各个子元素之后添加？，*。+等表示频率的修饰符</p>
+<p>例子：</p>
+<p>&lt;?xml version=”1.0” encoding=”GB2312”?&gt;</p>
+<p>&lt;!ELEMENT 喜欢的游戏 (#PCDATA | 游戏)*&gt;</p>
+<p>&lt;!ELEMENT 游戏 (#PCDATA | 游戏名称 | 游戏类型)*&gt;</p>
+<p>&lt;!ELEMENT 游戏名称 (#PCDATA)&gt;</p>
+<p>&lt;!ELEMENT 游戏类型 (#PCDATA)&gt;</p>
+<p>解析：</p>
+<p>&lt;喜欢的游戏&gt;是混合内容元素，可以包含字符串，也可以包含子元素&lt;游戏&gt;，而且可以出现多次</p>
+<p>&lt;游戏&gt;也是混合内容元素，可以包含字符串，又可以包含</p>
+<p> &lt;游戏名称&gt;和&lt;游戏类型&gt;两个元素，而且这两个元素的出现 次数也比较随意</p>
+<h3 id="定义子元素"><a href="#定义子元素" class="headerlink" title="定义子元素"></a>定义子元素</h3><p>元素包含子元素是XML文档中最常见的情形，DTD可以有效地定义各元素之间的父子关系，从而有效地描述整个文档结构。定义元素包含的子元素时，各个元素之间存在几种逻辑关系。</p>
+<h3 id="有序的子元素"><a href="#有序的子元素" class="headerlink" title="有序的子元素"></a>有序的子元素</h3><p>用英文逗号(,)作为子元素之间的分隔符，则子元素之间必须遵守所定义的顺序。</p>
+<p>例如：</p>
+<p>&lt;!ELEMENT 计算机书籍 (书名,作者,价格,简要介绍)&gt;</p>
+<h3 id="互斥的子元素"><a href="#互斥的子元素" class="headerlink" title="互斥的子元素"></a>互斥的子元素</h3><p>互斥的子元素表明一系列子元素之间只能出现其中一次。互斥子元素使用竖线（|）分隔，以竖线（|）分隔的多个元素只能出现其中之一。</p>
+<p>例如：</p>
+<p>&lt;!ELEMENT 计算机书籍 (书名|作者|价格|简要介绍)&gt;</p>
+<h3 id="子元素出现的频率："><a href="#子元素出现的频率：" class="headerlink" title="子元素出现的频率："></a>子元素出现的频率：</h3><p>子元素的出现频率通过在元素声明后紧跟一个表示频率的特殊标记来表示，DTD中表示频率的特殊</p>
+<p>标记有3个：</p>
+<p>+: 表明子元素可以出现1次或多次</p>
+<p>*:  表明子元素可以出现0次或多次</p>
+<p>?:  表明子元素可以出现0次或1次</p>
+<pre><code>如果在定义子元素时，没有在子元素后指定任何表示频率的特殊标记，则表明这些子元素只能出现一次，且必须一次。
+</code></pre><h3 id="组合子元素"><a href="#组合子元素" class="headerlink" title="组合子元素"></a>组合子元素</h3><p>例如</p>
+<!-- 将 书名、作者 定义成组，该元素组可出现1～多次 -->
+<p>&lt;!ELEMENT 计算机书籍 ((书名,作者)+,价格,简要介绍)&gt;</p>
+<h3 id="无序的子元素："><a href="#无序的子元素：" class="headerlink" title="无序的子元素："></a>无序的子元素：</h3><p>从理论上讲，DTD没有专门为定义无序子元素提供语法，如果希望使用DTD来表示某个元素之内可以接受无序的子元素。</p>
+<p>例如：</p>
+<p>&lt;!ELEMENT 计算机书籍 (书名|作者|价格|简要介绍)+&gt;</p>
+<h3 id="DTD对属性声明【重点掌握】"><a href="#DTD对属性声明【重点掌握】" class="headerlink" title="DTD对属性声明【重点掌握】"></a>DTD对属性声明【重点掌握】</h3><pre><code>属性是描述元素的额外信息的，是对元素的修饰与补充。一般来说，信息详实的XML文档都是一个特点，即元素通过属性来描述边缘信息。
+
+在 DTD 中，属性通过 ATTLIST 声明来进行声明。一个属性声明可以声明一个元素的多个属性。
+</code></pre><p>例：&lt;! ATTLIST 元素名 属性名 属性类型  [属性限定条件] [默认值]&gt;</p>
+<p>“属性限定条件”和“默认值‘两部分是可选的吗，有下面几种情况</p>
+<p>在没有指定“元素对属性的约束”时，必须为该属性指定“默认值”；</p>
+<p>当“元素对属性的约束”是#REQUIRED时，不能为该属性指定“默认值”；</p>
+<p>当“元素对属性的约束”是“IMPLIED”时，不能为该属性指定“默认值”；</p>
+<p>当“元素对属性的约束”是“FIXED”时，必须为该属性指定“默认值”；</p>
+<h3 id="对属性的限定条件："><a href="#对属性的限定条件：" class="headerlink" title="对属性的限定条件："></a>对属性的限定条件：</h3><p>#REQUIRED: 必须的属性，意味着必须为该元素提供该属性</p>
+<p>#IMPLIED: 该属性是可有可无的</p>
+<p>#FIXED: 该属性的值是固定的，定义是必须制定固定值。使用该元素时无需为其分配该属性,XML处理器会自动为给属性增加固定值</p>
+<h3 id="定义属性类型"><a href="#定义属性类型" class="headerlink" title="定义属性类型"></a>定义属性类型</h3><p>属性类型</p>
+<p>含义</p>
+<p>CDATA</p>
+<p>值为字符串数据</p>
+<p>(en1|en2|..)</p>
+<p>此值是枚举列表中的一个值</p>
+<p>ID</p>
+<p>该属性值必须是有效地标识符，在XML文档时唯一的</p>
+<p>IDREF</p>
+<p>值为另外一个元素的 id属性值</p>
+<p>IDREFS</p>
+<p>值必须引用自多个已经有的ID属性值，多个ID属性值用空格隔开</p>
+<p>NMTOKEN</p>
+<p>值为合法的 XML 名称</p>
+<p>NMTOKENS</p>
+<p>值为多个合法的 XML 名称的列表</p>
+<p>ENTITY</p>
+<p>值是一个外部实体，如图片支持</p>
+<p>ENTITIES</p>
+<p>值是一个实体列表，多个实体之间以空格隔开</p>
+<p>NOTATION</p>
+<p>该属性值是在DTD中声明过的符号，这个是过期的，不要使用</p>
+<h3 id="字符类型"><a href="#字符类型" class="headerlink" title="字符类型"></a>字符类型</h3><pre><code>CDATA   是简单的纯文本字符类型,是最常用的类型,将简单的文本用做属性值。可以包括任何字符串，但不允许使用“&lt;”,“&gt;”,“&amp;”,“””,“‘”。如果需要使用必须使用实体引用。属性值和元素内容都可以是文本类型，但是定义的方法不同
+</code></pre><p>&lt;! ATTLIST  Student  name CDATA   #REQUIRED&gt;</p>
+<h3 id="枚举类型"><a href="#枚举类型" class="headerlink" title="枚举类型"></a>枚举类型</h3><p>声明了属性的备选值列表，属性必须从该列表中选择一个值作为属性值。</p>
+<p>例子：</p>
+<p>创建：</p>
+<p>&lt;?xml version=”1.0” encoding=”GB2312”?&gt;</p>
+<p>&lt;!ELEMENT 购物车 (肉<em> , 水果</em>)&gt;</p>
+<p>&lt;!ELEMENT 肉 EMPTY&gt;</p>
+<p>&lt;!ELEMENT 水果 EMPTY&gt;</p>
+<p>&lt;!ATTLIST 肉 类型 (鸡肉|牛肉|猪肉|鱼肉) #REQUIRED&gt;</p>
+<p>&lt;!ATTLIST 水果 类型 (苹果|梨|桔子) #REQUIRED&gt;</p>
+<p>引用：</p>
+<p>&lt;?xml version=”1.0” encoding=”GB2312”?&gt;</p>
+<p>&lt;!DOCTYPE 购物车 SYSTEM “enumerated.dtd”&gt;</p>
+<p>&lt;购物车&gt;</p>
+<pre><code>&lt;肉 类型=&quot;猪肉&quot;/&gt;
+
+&lt;肉 类型=&quot;鸡肉&quot;/&gt;
+
+&lt;水果 类型=&quot;苹果&quot;/&gt;
+
+&lt;水果 类型=&quot;梨&quot;/&gt;
+</code></pre><p>&lt;/购物车&gt;</p>
+<h3 id="ID、IDREF、-IDREFS类型"><a href="#ID、IDREF、-IDREFS类型" class="headerlink" title="ID、IDREF、 IDREFS类型"></a>ID、IDREF、 IDREFS类型</h3><pre><code>ID类型是一种较为严格的约束，它要求属性值必须是有效地XML标识名，而且在整个XML文件档中其值不能重复。
+</code></pre><p>&lt;?xml version=”1.0” encoding=”GB2312”?&gt;</p>
+<p>&lt;!ELEMENT beans (bean|object)*&gt;</p>
+<p>&lt;!ELEMENT bean (property*)&gt;</p>
+<p>&lt;!ELEMENT object EMPTY&gt;</p>
+<p>&lt;!ELEMENT property EMPTY&gt;</p>
+<p>&lt;!ATTLIST bean id ID #REQUIRED&gt;    // <bean…>必须有id属性，必须是类ID型</bean…></p>
+<p>&lt;!ATTLIST object id ID #REQUIRED&gt;   //<object…>必须有id属性，必须是类ID型</object…></p>
+<p>&lt;!ATTLIST property name CDATA #REQUIRED&gt;  //<property…>必须有name属性，字符串类型</property…></p>
+<p>&lt;!ATTLIST property ref IDREF #IMPLIED&gt; //<property…>可以有ref属性，IDREF类型</property…></p>
+<p>&lt;!ATTLIST property set IDREFS #IMPLIED&gt;  //<property…>可以有set属性，IDREFS类型</property…></p>
+<h3 id="NMTOKEN和NMTOKENS类型"><a href="#NMTOKEN和NMTOKENS类型" class="headerlink" title="NMTOKEN和NMTOKENS类型"></a>NMTOKEN和NMTOKENS类型</h3><p>NMTOKEN是一个比ID类型更宽松的类型，它只要求该属性是个合法的XML标识。它也是字符串数据，但是约束比CDATA约束要严格，它要求出现的字符要少。</p>
+<h3 id="ENTITY和ENTITIES类型"><a href="#ENTITY和ENTITIES类型" class="headerlink" title="ENTITY和ENTITIES类型"></a>ENTITY和ENTITIES类型</h3><p>定义ENTITY和ENTITIES类型的属性其属性值只能是未解析的实体，与外部数据相连。如图像文件，音像文件等。</p>
+<p>例：&lt;?xml version=”1.0” encoding=”gb2312”?&gt;</p>
+<p>&lt;!ENTITY desc_movie SYSTEM “<a href="http://www.crazyit.org/test.wmv" target="_blank" rel="external">http://www.crazyit.org/test.wmv</a>“ &gt;</p>
+<p>&lt;!ENTITY book_part1 SYSTEM “<a href="http://www.crazyit.org/part1.pdf" target="_blank" rel="external">http://www.crazyit.org/part1.pdf</a>“ &gt;</p>
+<p>&lt;!ENTITY book_part2 SYSTEM “<a href="http://www.crazyit.org/part2.pdf" target="_blank" rel="external">http://www.crazyit.org/part2.pdf</a>“ &gt;</p>
+<p>&lt;!ENTITY book_part3 SYSTEM “<a href="http://www.crazyit.org/part3.pdf" target="_blank" rel="external">http://www.crazyit.org/part3.pdf</a>“ &gt;</p>
+<p>&lt;!ELEMENT book (#PCDATA)&gt;</p>
+<!-- 定义2个属性，它们的类型分别是ENTITY和ENTITIES -->
+<p>&lt;!ATTLIST book description ENTITY “desc_movie”&gt;</p>
+<p>&lt;!ATTLIST book content ENTITIES #IMPLIED &gt;</p>
+<h3 id="注意：-2"><a href="#注意：-2" class="headerlink" title="注意："></a>注意：</h3><p>一旦声明某个属性的类型是entity或entities，就意味着该属性值只能是一个或多个未解析的实体，而不是已经解析的实体。对于未解析的实体而言，不能通过普通实体引用方式去引用，他们只能作为entity或entities类型的属性值。</p>
+<h3 id="定义实体"><a href="#定义实体" class="headerlink" title="定义实体"></a>定义实体</h3><pre><code>所谓实体引用就是用一个字符串代替另一个字符串。定义实体有如下作用：提高代码的服用，方便修改，维护XML文档使用某些特殊的符号，这些特殊的符号可能会使XML解析器混淆减少字符输入量，如果某个字符串特别长，而且需要经常使用，则可以定义为实体
+</code></pre><h3 id="实体的概念"><a href="#实体的概念" class="headerlink" title="实体的概念"></a>实体的概念</h3><pre><code>实体是包含了文档片段的虚拟存储单元，可用来存储XML声明、DTD、其他形式的文本及二进制数据等。简单来讲就是一段代码或数据的代称，这个代称即为实体的名字。
+
+当需要在文档中引用某段代码或数据时，可以引用与这段代码或数据相对应的实体名称来代替实体的具体内容。具有正确性检查功能的XML处理器在提交文档给最终应用程序之前或在显示文档以前，将先把所有不同的实体引用替换为与其对应的具体内容，从而构成一个结构完整的文档。
+</code></pre><h3 id="实体的分类"><a href="#实体的分类" class="headerlink" title="实体的分类"></a>实体的分类</h3><p>按照实体的具体内容来分类，实体可分为可解析与不可解析两类。可解析实体的具体内容为简单的字符、数字、文本块，而不可解析实体的具体内容则为图片、声音等二进制文件。</p>
+<p>按照逻辑存储来分类，实体可分为内部实体与外部实体两类。内部实体的内容是在文档内部设定的；而外部实体则是一个外部独立的物理存储对象，如某个外部文件。按照使用的范围来分类，实体可分为一般实体与参数实体两类。一般实体都用来构成文档的具体内容，可出现在XML文档中，也可出现在DTD中；而参数实体只能出现在DTD中，不能出现在XML文档中。</p>
+<h3 id="定义普通实体"><a href="#定义普通实体" class="headerlink" title="定义普通实体"></a>定义普通实体</h3><p>&lt;! ENTITY    实体名     “实体值”&gt;</p>
+<p>使用实体的语法：&amp;实体名；</p>
+<p>定义了可在XML文档中使用的实体后，该实体既可以作为某个XML元素的字符串使用，也可以作为某个XML元素的属性值使用</p>
+<h3 id="定义参数实体"><a href="#定义参数实体" class="headerlink" title="定义参数实体"></a>定义参数实体</h3><p>参数实体是在DTD文档里使用的实体，语法：</p>
+<p>&lt;! ENTITY    % 实体名     “实体值”&gt;</p>
+<p>使用实体的语法：%实体名；</p>
+<p>注：</p>
+<p>如果需要DTD中使用参数实体，参数实体必须前向定义，再使用实体参数之前定义，不能颠倒顺序。</p>
+<h3 id="外部普通实体"><a href="#外部普通实体" class="headerlink" title="外部普通实体"></a>外部普通实体</h3><p>外部实体的值不在DTD中直接指定，而是专门提供一个文件为该实体指定值—-“实体值所在的文件的URL”处的文件来指定。定义外部实体的语。</p>
+<p>法格式：&lt;! ENTITY    实体名  SYSTEM  “实体值所在文件的URI”&gt;</p>
+<p>&lt;! ENTITY   实体名  PUBLIC “公用实体标识名”  “实体值所在文件的URI”&gt;</p>
+<h3 id="外部参数实体"><a href="#外部参数实体" class="headerlink" title="外部参数实体"></a>外部参数实体</h3><p>类似于定义内部参数实体，语法结构如下：</p>
+<p>&lt;!ENTITY %实体名 SYSTEM|PUBLIC[“公用实体标识名”]  “实体值所在文件的URI”&gt;</p>
+<p>转载自 : <a href="http://blog.csdn.net/xiaolang827/article/details/6826354" target="_blank" rel="external">街角 —XML–dtd相关知识</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/05/04/xml-dtd/">XML --dtd相关知识</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 ChenDiDi 的个人博客">ChenDiDi</a></p>
+        <p><span>发布时间:</span>2016年05月04日 - 16时42分</p>
+        <p><span>最后更新:</span>2016年05月04日 - 17时01分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/05/04/xml-dtd/" title="XML --dtd相关知识">http://chendidi.rocks/2016/05/04/xml-dtd/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://chendidi.rocks/2016/05/04/xml-dtd/　　作者: ChenDiDi" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2016/05/18/ssh-spring1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          SSH框架搭建心得
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/05/02/Hiberbate/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hibernate 中 list() 和iterate()的区别</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#DTD简介"><span class="toc-number">1.</span> <span class="toc-text">DTD简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DTD是一套关于标记的语法规则，它定义了文档的逻辑结构，规定了文档中所使用的元素、实体、元素的属性、元素与实体之间的关系。DTD告诉你可以在哪些文档中使用哪些标记，各标记出现的次序，哪些标记出现在哪些标记中，哪些标记有属性等等。DTD是XML文件的验证机制，定义好DTD，就可以使用XML解析器对编写好的XML文档进行DTD检查，判断XML文档内容是否为有效的XML文档内容。"><span class="toc-number">2.</span> <span class="toc-text">DTD是一套关于标记的语法规则，它定义了文档的逻辑结构，规定了文档中所使用的元素、实体、元素的属性、元素与实体之间的关系。DTD告诉你可以在哪些文档中使用哪些标记，各标记出现的次序，哪些标记出现在哪些标记中，哪些标记有属性等等。DTD是XML文件的验证机制，定义好DTD，就可以使用XML解析器对编写好的XML文档进行DTD检查，判断XML文档内容是否为有效的XML文档内容。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么使用DTD？"><span class="toc-number">3.</span> <span class="toc-text">为什么使用DTD？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用DTD的好处"><span class="toc-number">4.</span> <span class="toc-text">使用DTD的好处</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#内部DTD"><span class="toc-number">5.</span> <span class="toc-text">内部DTD</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#内部DTD实例："><span class="toc-number">6.</span> <span class="toc-text">内部DTD实例：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#外部DTD"><span class="toc-number">7.</span> <span class="toc-text">外部DTD</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#外部DTD实例"><span class="toc-number">8.</span> <span class="toc-text">外部DTD实例:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建："><span class="toc-number">9.</span> <span class="toc-text">创建：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注意：为了让DTD能支持非西欧字符，应该为外部DTD文档指定声明，DTD声明和XML声明的语法完全相同。"><span class="toc-number">10.</span> <span class="toc-text">注意：为了让DTD能支持非西欧字符，应该为外部DTD文档指定声明，DTD声明和XML声明的语法完全相同。　　　　　　　　　　</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#公用DTD"><span class="toc-number">11.</span> <span class="toc-text">公用DTD</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#有一种外部DTD，是由某个权威机构制定，供特定行业或公司，这种DTD又被称为公用DTD。"><span class="toc-number">12.</span> <span class="toc-text">有一种外部DTD，是由某个权威机构制定，供特定行业或公司，这种DTD又被称为公用DTD。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注：公用DTD与外部DTD区别在于：公用DTD使用PUBLIC代替了原来的SYSTEM，并增加了DTD标识名。"><span class="toc-number">13.</span> <span class="toc-text">注：公用DTD与外部DTD区别在于：公用DTD使用PUBLIC代替了原来的SYSTEM，并增加了DTD标识名。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DTD文档的结构"><span class="toc-number">14.</span> <span class="toc-text">DTD文档的结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DTD对元素声明【重点掌握】"><span class="toc-number">15.</span> <span class="toc-text">DTD对元素声明【重点掌握】</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定义任意类型的元素："><span class="toc-number">16.</span> <span class="toc-text">定义任意类型的元素：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注意："><span class="toc-number">17.</span> <span class="toc-text">注意：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定义只能是字符串的元素的语法格式如下"><span class="toc-number">18.</span> <span class="toc-text">定义只能是字符串的元素的语法格式如下</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定义混合内容元素"><span class="toc-number">19.</span> <span class="toc-text">定义混合内容元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注意：-1"><span class="toc-number">20.</span> <span class="toc-text">注意：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定义子元素"><span class="toc-number">21.</span> <span class="toc-text">定义子元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#有序的子元素"><span class="toc-number">22.</span> <span class="toc-text">有序的子元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#互斥的子元素"><span class="toc-number">23.</span> <span class="toc-text">互斥的子元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#子元素出现的频率："><span class="toc-number">24.</span> <span class="toc-text">子元素出现的频率：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#组合子元素"><span class="toc-number">25.</span> <span class="toc-text">组合子元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#无序的子元素："><span class="toc-number">26.</span> <span class="toc-text">无序的子元素：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DTD对属性声明【重点掌握】"><span class="toc-number">27.</span> <span class="toc-text">DTD对属性声明【重点掌握】</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对属性的限定条件："><span class="toc-number">28.</span> <span class="toc-text">对属性的限定条件：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定义属性类型"><span class="toc-number">29.</span> <span class="toc-text">定义属性类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符类型"><span class="toc-number">30.</span> <span class="toc-text">字符类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#枚举类型"><span class="toc-number">31.</span> <span class="toc-text">枚举类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ID、IDREF、-IDREFS类型"><span class="toc-number">32.</span> <span class="toc-text">ID、IDREF、 IDREFS类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NMTOKEN和NMTOKENS类型"><span class="toc-number">33.</span> <span class="toc-text">NMTOKEN和NMTOKENS类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ENTITY和ENTITIES类型"><span class="toc-number">34.</span> <span class="toc-text">ENTITY和ENTITIES类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注意：-2"><span class="toc-number">35.</span> <span class="toc-text">注意：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定义实体"><span class="toc-number">36.</span> <span class="toc-text">定义实体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实体的概念"><span class="toc-number">37.</span> <span class="toc-text">实体的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实体的分类"><span class="toc-number">38.</span> <span class="toc-text">实体的分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定义普通实体"><span class="toc-number">39.</span> <span class="toc-text">定义普通实体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定义参数实体"><span class="toc-number">40.</span> <span class="toc-text">定义参数实体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#外部普通实体"><span class="toc-number">41.</span> <span class="toc-text">外部普通实体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#外部参数实体"><span class="toc-number">42.</span> <span class="toc-text">外部参数实体</span></a></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2016/05/04/xml-dtd/" data-title="XML --dtd相关知识" data-url="http://chendidi.rocks/2016/05/04/xml-dtd/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"http://chendidi.duoshuo.com"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/05/18/ssh-spring1/" title="上一篇: SSH框架搭建心得">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2016/05/02/Hiberbate/" title="下一篇: Hibernate 中 list() 和iterate()的区别">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/06/12/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/18/ssh-spring1/">SSH框架搭建心得</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/04/xml-dtd/">XML --dtd相关知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/02/Hiberbate/">Hibernate 中 list() 和iterate()的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/22/test/">Hexo 搭建个人博客</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2016 ChenDiDi
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >外星访客: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 11;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+    <script type="text/javascript">
+      window.onload = function(){
+        document.getElementById("search").onclick = function(){
+            console.log("search")
+            search();
+        }
+      }
+      function search(){
+        (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+        (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+        })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+        _st('install','A1Pz-LKMXbrzcFg2FWi6','2.0.0');
+      }
+    </script>
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"chendidi"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+  </div>
+</body>
+</html>

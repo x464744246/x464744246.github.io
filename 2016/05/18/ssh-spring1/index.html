@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>SSH框架搭建心得 | ChenDiDi&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="搭了一天的SSH，碰到了许多问题，分享一下。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SSH框架搭建心得">
+<meta property="og:url" content="http://chendidi.rocks/2016/05/18/ssh-spring1/index.html">
+<meta property="og:site_name" content="ChenDiDi's Blog">
+<meta property="og:description" content="搭了一天的SSH，碰到了许多问题，分享一下。">
+<meta property="og:updated_time" content="2016-05-18T13:27:25.904Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SSH框架搭建心得">
+<meta name="twitter:description" content="搭了一天的SSH，碰到了许多问题，分享一下。">
+  
+    <link rel="alternative" href="/atom.xml" title="ChenDiDi&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/">ChenDiDi</a></h1>
+        </hgroup>
+
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="search" placeholder=" Search...">
+            </form>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/Home/index.html">博客首页</a></li>
+                        
+                            <li><a href="/works">作品展示</a></li>
+                        
+                            <li><a href="/about">留言打卡</a></li>
+                        
+                            <li><a href="/FrontEndGuide">前端导航</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="#" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/x464744246" title="github">github</a>
+                            
+                                <a class="fl zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+                            
+                                <a class="fl weibo" target="_blank" href="#" title="weibo">weibo</a>
+                            
+                                <a class="fl google" target="_blank" href="#" title="google">google</a>
+                            
+                                <a class="fl twitter" target="_blank" href="#" title="twitter">twitter</a>
+                            
+                                <a class="fl facebook" target="_blank" href="#" title="facebook">facebook</a>
+                            
+                                <a class="fl steam" target="_blank" href="http://steamcommunity.com/id/wojiushiyaopapapa/" title="steam">steam</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaEE/" style="font-size: 10px;">JavaEE</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/xml/" style="font-size: 10px;">xml</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://lilpilot.co/">飞行员不会飞</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">爱运动、cs选手~</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">ChenDiDi</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">ChenDiDi</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/Home/index.html">博客首页</a></li>
+                
+                    <li><a href="/works">作品展示</a></li>
+                
+                    <li><a href="/about">留言打卡</a></li>
+                
+                    <li><a href="/FrontEndGuide">前端导航</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="#" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/x464744246" title="github">github</a>
+                    
+                        <a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+                    
+                        <a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+                    
+                        <a class="google" target="_blank" href="#" title="google">google</a>
+                    
+                        <a class="twitter" target="_blank" href="#" title="twitter">twitter</a>
+                    
+                        <a class="facebook" target="_blank" href="#" title="facebook">facebook</a>
+                    
+                        <a class="steam" target="_blank" href="http://steamcommunity.com/id/wojiushiyaopapapa/" title="steam">steam</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-ssh-spring1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/18/ssh-spring1/" class="article-date">
+      <time datetime="2016-05-18T12:58:32.000Z" itemprop="datePublished">2016-05-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      SSH框架搭建心得
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Spring/">Spring</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SSH/">SSH</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="搭了一天的SSH，碰到了许多问题，分享一下。"><a href="#搭了一天的SSH，碰到了许多问题，分享一下。" class="headerlink" title="搭了一天的SSH，碰到了许多问题，分享一下。"></a>搭了一天的SSH，碰到了许多问题，分享一下。</h3><a id="more"></a>
+<p>   废话不多，直接上代码，下面是spring的配置文件内容<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;beans xmlns:xsi=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span><br><span class="line">       xmlns=<span class="string">"http://www.springframework.org/schema/beans"</span> xmlns:context=<span class="string">"http://www.springframework.org/schema/context"</span></span><br><span class="line">       xmlns:p=<span class="string">"http://www.springframework.org/schema/p"</span> xmlns:tx=<span class="string">"http://www.springframework.org/schema/tx"</span></span><br><span class="line">       xmlns:aop=<span class="string">"http://www.springframework.org/schema/aop"</span></span><br><span class="line">       xsi:schemaLocation=<span class="string">"http://www.springframework.org/schema/beans</span><br><span class="line">       http://www.springframework.org/schema/beans/spring-beans-4.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"</span>&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &lt;!-- 定义扫描包  自动生成Bean --&gt;</span><br><span class="line">    &lt;context:component-scan base-package=<span class="string">"cn.test"</span>/&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 自动加载数据源属性 --&gt;</span><br><span class="line">    &lt;context:property-override location=<span class="string">"classpath*:db.properties"</span>/&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 定义数据源Bean，使用C3P0数据源实现 --&gt;</span><br><span class="line">    &lt;bean id=<span class="string">"dataSource"</span> class=<span class="string">"com.mchange.v2.c3p0.ComboPooledDataSource"</span> destroy-method=<span class="string">"close"</span>/&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &lt;!-- 定义Hibernate的SessionFactory，SessionFactory需要依赖数据源，注入dataSource --&gt;</span><br><span class="line">    &lt;bean id=<span class="string">"sessionFactory"</span> class=<span class="string">"org.springframework.orm.hibernate4.LocalSessionFactoryBean"</span> p:dataSource-ref=<span class="string">"dataSource"</span> &gt;</span><br><span class="line">        &lt;!-- annotatedClasses用来列出全部持久化类 --&gt;</span><br><span class="line">        &lt;property name=<span class="string">"annotatedClasses"</span>&gt;</span><br><span class="line">            &lt;list&gt;</span><br><span class="line">                &lt;value&gt;cn.test.model.User&lt;/value&gt;</span><br><span class="line">            &lt;/list&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line">        &lt;!-- 定义Hibernate SessionFactory的属性 --&gt;</span><br><span class="line">        &lt;property name=<span class="string">"hibernateProperties"</span>&gt;</span><br><span class="line">            &lt;props&gt;</span><br><span class="line">                &lt;!-- 指定Hibernate的连接方言 --&gt;</span><br><span class="line">                &lt;prop key=<span class="string">"hibernate.dialect"</span>&gt;org.hibernate.dialect.MySQL5InnoDBDialect&lt;/prop&gt;</span><br><span class="line">                &lt;!--是否根据Hiberante映射创建数据表 --&gt;</span><br><span class="line">                &lt;prop key=<span class="string">"hibernate.hbm2ddl.auto"</span>&gt;update&lt;/prop&gt;</span><br><span class="line">                &lt;prop key=<span class="string">"hibernate.show_sql"</span>&gt;<span class="literal">true</span>&lt;/prop&gt;</span><br><span class="line">                &lt;prop key=<span class="string">"hibernate.format_sql"</span>&gt;<span class="literal">true</span>&lt;/prop&gt;</span><br><span class="line">            &lt;/props&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line">    &lt;/bean&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &lt;!-- 配置Hibernate的局部事务管理器，使用HibernateTransactionManager类 --&gt;</span><br><span class="line">    &lt;!-- 该类是PlatformTransactionManager接口针对采用Hibernate的特定实现类 --&gt;</span><br><span class="line">    &lt;!-- 配置HibernateTransactionManager需依赖注入SessionFactory --&gt;</span><br><span class="line">    &lt;bean id=<span class="string">"transactionManager"</span> class=<span class="string">"org.springframework.orm.hibernate4.HibernateTransactionManager"</span></span><br><span class="line">          p:sessionFactory-ref=<span class="string">"sessionFactory"</span>/&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 配置事务增强处理Bean,指定事务管理器 --&gt;</span><br><span class="line">    &lt;tx:advice id=<span class="string">"txAdvice"</span> transaction-manager=<span class="string">"transactionManager"</span>&gt;</span><br><span class="line">        &lt;!-- 用于配置详细的事务定义 --&gt;</span><br><span class="line">        &lt;tx:attributes&gt;</span><br><span class="line">            &lt;!-- 所有以<span class="string">'get'</span>开头和存在<span class="string">'check'</span>的方法是<span class="built_in">read</span>-only的 --&gt;</span><br><span class="line">            &lt;tx:method name=<span class="string">"get*"</span> <span class="built_in">read</span>-only=<span class="string">"true"</span>/&gt;</span><br><span class="line">            &lt;tx:method name=<span class="string">"*check*"</span> <span class="built_in">read</span>-only=<span class="string">"true"</span>/&gt;</span><br><span class="line">            &lt;!-- 其他方法使用默认的事务设置，指定超时时长为5秒 --&gt;</span><br><span class="line">            &lt;tx:method name=<span class="string">"*"</span> isolation=<span class="string">"DEFAULT"</span> propagation=<span class="string">"REQUIRED"</span> timeout=<span class="string">"5"</span>/&gt;</span><br><span class="line">        &lt;/tx:attributes&gt;</span><br><span class="line">    &lt;/tx:advice&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--启动@AspectJ支持--&gt;</span><br><span class="line">    &lt;aop:aspectj-autoproxy/&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- AOP配置的元素 --&gt;</span><br><span class="line">    &lt;aop:config&gt;</span><br><span class="line">        &lt;!-- 配置一个切入点 --&gt;</span><br><span class="line">        &lt;aop:pointcut id=<span class="string">"myPointcut"</span> expression=<span class="string">"execution(* cn.test.service..*.*(..))"</span>/&gt;</span><br><span class="line">        &lt;!-- 指定在myPointcut切入点应用txAdvice事务增强处理 --&gt;</span><br><span class="line">        &lt;aop:advisor advice-ref=<span class="string">"txAdvice"</span> pointcut-ref=<span class="string">"myPointcut"</span>/&gt;</span><br><span class="line">    &lt;/aop:config&gt;</span><br><span class="line"></span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure></p>
+<p>   其中db.properties是数据库的配置文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">dataSource.driverClass=com.mysql.jdbc.Driver</span><br><span class="line">dataSource.jdbcUrl=jdbc:mysql://127.0.0.1/testten?useUnicode=<span class="literal">true</span>&amp;characterEncoding=UTF-8</span><br><span class="line">dataSource.user=root</span><br><span class="line">dataSource.password=123456</span><br><span class="line">dataSource.maxPoolSize=200</span><br><span class="line">dataSource.minPoolSize=2</span><br><span class="line">dataSource.initialPoolSize=2</span><br><span class="line">dataSource.maxIdleTime=50</span><br></pre></td></tr></table></figure></p>
+<p>   配置完了之后将spring的配置文件在web.xml中进行配置，注释的地方是非默认位置的配置方法<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--contextConfigLocation在 ContextLoaderListener类中的默认值是 /WEB-INF/applicationContext.xml --&gt;</span><br><span class="line">&lt;context-param&gt;</span><br><span class="line">	&lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;</span><br><span class="line">	&lt;param-value&gt;/WEB-INF/applicationContext.xml&lt;/param-value&gt;</span><br><span class="line">	&lt;!-- &lt;param-value&gt;classpath:applicationContext*.xml&lt;/param-value&gt; --&gt;</span><br><span class="line">&lt;/context-param&gt;</span><br><span class="line"></span><br><span class="line">&lt;listener&gt;</span><br><span class="line">	&lt;listener-class&gt;org.springframework.web.context.ContextLoaderListener&lt;/listener-class&gt;</span><br><span class="line">&lt;/listener&gt;</span><br></pre></td></tr></table></figure></p>
+<p>   其中可能会有一个问题(为验证)，spring会从structs接管action,然而按原配置,structs和spring都会对action类进行实例化，<br>所以需要进行一些修改<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">	&lt;action name=<span class="string">"UserAction"</span> class=<span class="string">"userAction"</span>&gt;</span><br><span class="line">			&lt;result name=<span class="string">"admin"</span>&gt;/admin.jsp&lt;/result&gt;</span><br><span class="line">			&lt;result name=<span class="string">"user"</span>&gt;/user.jsp&lt;/result&gt;</span><br><span class="line">			&lt;result name=<span class="string">"WrongPassword"</span>&gt;/WrongPassword.jsp&lt;/result&gt;</span><br><span class="line">		&lt;!-- 	&lt;interceptor-ref name=<span class="string">"defaultStack"</span>&gt;&lt;/interceptor-ref&gt;</span><br><span class="line">			&lt;interceptor-ref name=<span class="string">"test"</span>&gt;&lt;/interceptor-ref&gt; --&gt;</span><br><span class="line">			</span><br><span class="line">		&lt;/action&gt;</span><br><span class="line">```   </span><br><span class="line">   此处的class不再是原来的类路径，而是spring搜索包后给action分配的id,这个可以在注解中进行修改</span><br><span class="line">```bash</span><br><span class="line">@Scope(<span class="string">"prototype"</span>)</span><br><span class="line">@Controller(<span class="string">"userAction"</span>)</span><br><span class="line">public class UserAction extends ActionSupport &#123;...</span><br></pre></td></tr></table></figure></p>
+<p>   当不能确定 Spring 容器中一定拥有某个类的 Bean 时，可以在需要自动注入该类 Bean 的地方可以使用 @Autowired(required = false)，<br>这等于告诉 Spring：在找不到匹配 Bean 时也不报错。</p>
+<h3 id="基本上问题就这些，其他问题都是本人的一些小问题-然后-记得包一定要导全"><a href="#基本上问题就这些，其他问题都是本人的一些小问题-然后-记得包一定要导全" class="headerlink" title="基本上问题就这些，其他问题都是本人的一些小问题,然后,记得包一定要导全~"></a>基本上问题就这些，其他问题都是本人的一些小问题,然后,记得包一定要导全~</h3>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/05/18/ssh-spring1/">SSH框架搭建心得</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 ChenDiDi 的个人博客">ChenDiDi</a></p>
+        <p><span>发布时间:</span>2016年05月18日 - 20时58分</p>
+        <p><span>最后更新:</span>2016年05月18日 - 21时27分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/05/18/ssh-spring1/" title="SSH框架搭建心得">http://chendidi.rocks/2016/05/18/ssh-spring1/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://chendidi.rocks/2016/05/18/ssh-spring1/　　作者: ChenDiDi" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2016/06/12/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/05/04/xml-dtd/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">XML --dtd相关知识</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#搭了一天的SSH，碰到了许多问题，分享一下。"><span class="toc-number">1.</span> <span class="toc-text">搭了一天的SSH，碰到了许多问题，分享一下。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基本上问题就这些，其他问题都是本人的一些小问题-然后-记得包一定要导全"><span class="toc-number">2.</span> <span class="toc-text">基本上问题就这些，其他问题都是本人的一些小问题,然后,记得包一定要导全~</span></a></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2016/05/18/ssh-spring1/" data-title="SSH框架搭建心得" data-url="http://chendidi.rocks/2016/05/18/ssh-spring1/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"http://chendidi.duoshuo.com"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/06/12/hello-world/" title="上一篇: Hello World">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2016/05/04/xml-dtd/" title="下一篇: XML --dtd相关知识">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/06/12/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/18/ssh-spring1/">SSH框架搭建心得</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/04/xml-dtd/">XML --dtd相关知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/02/Hiberbate/">Hibernate 中 list() 和iterate()的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/22/test/">Hexo 搭建个人博客</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2016 ChenDiDi
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >外星访客: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 11;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+    <script type="text/javascript">
+      window.onload = function(){
+        document.getElementById("search").onclick = function(){
+            console.log("search")
+            search();
+        }
+      }
+      function search(){
+        (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+        (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+        })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+        _st('install','A1Pz-LKMXbrzcFg2FWi6','2.0.0');
+      }
+    </script>
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"chendidi"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+  </div>
+</body>
+</html>

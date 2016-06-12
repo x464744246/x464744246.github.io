@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo 搭建个人博客 | ChenDiDi&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Hexo 配置文件 _config.ymlHexo 的各种通用的配置都是在博客根目录行下的 _config.yml 文件中设置的。下面介绍一些常用的配置项：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo 搭建个人博客">
+<meta property="og:url" content="http://chendidi.rocks/2016/04/22/test/index.html">
+<meta property="og:site_name" content="ChenDiDi's Blog">
+<meta property="og:description" content="Hexo 配置文件 _config.ymlHexo 的各种通用的配置都是在博客根目录行下的 _config.yml 文件中设置的。下面介绍一些常用的配置项：">
+<meta property="og:updated_time" content="2016-05-02T06:44:17.199Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo 搭建个人博客">
+<meta name="twitter:description" content="Hexo 配置文件 _config.ymlHexo 的各种通用的配置都是在博客根目录行下的 _config.yml 文件中设置的。下面介绍一些常用的配置项：">
+  
+    <link rel="alternative" href="/atom.xml" title="ChenDiDi&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/">ChenDiDi</a></h1>
+        </hgroup>
+
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="search" placeholder=" Search...">
+            </form>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/Home/index.html">博客首页</a></li>
+                        
+                            <li><a href="/works">作品展示</a></li>
+                        
+                            <li><a href="/about">留言打卡</a></li>
+                        
+                            <li><a href="/FrontEndGuide">前端导航</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="#" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/x464744246" title="github">github</a>
+                            
+                                <a class="fl zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+                            
+                                <a class="fl weibo" target="_blank" href="#" title="weibo">weibo</a>
+                            
+                                <a class="fl google" target="_blank" href="#" title="google">google</a>
+                            
+                                <a class="fl twitter" target="_blank" href="#" title="twitter">twitter</a>
+                            
+                                <a class="fl facebook" target="_blank" href="#" title="facebook">facebook</a>
+                            
+                                <a class="fl steam" target="_blank" href="http://steamcommunity.com/id/wojiushiyaopapapa/" title="steam">steam</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaEE/" style="font-size: 10px;">JavaEE</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/xml/" style="font-size: 10px;">xml</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://lilpilot.co/">飞行员不会飞</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">爱运动、cs选手~</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">ChenDiDi</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">ChenDiDi</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/Home/index.html">博客首页</a></li>
+                
+                    <li><a href="/works">作品展示</a></li>
+                
+                    <li><a href="/about">留言打卡</a></li>
+                
+                    <li><a href="/FrontEndGuide">前端导航</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="#" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/x464744246" title="github">github</a>
+                    
+                        <a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+                    
+                        <a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+                    
+                        <a class="google" target="_blank" href="#" title="google">google</a>
+                    
+                        <a class="twitter" target="_blank" href="#" title="twitter">twitter</a>
+                    
+                        <a class="facebook" target="_blank" href="#" title="facebook">facebook</a>
+                    
+                        <a class="steam" target="_blank" href="http://steamcommunity.com/id/wojiushiyaopapapa/" title="steam">steam</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-test" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/22/test/" class="article-date">
+      <time datetime="2016-04-22T05:38:36.000Z" itemprop="datePublished">2016-04-22</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Hexo 搭建个人博客
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Hexo/">Hexo</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="Hexo-配置文件-config-yml"><a href="#Hexo-配置文件-config-yml" class="headerlink" title="Hexo 配置文件 _config.yml"></a>Hexo 配置文件 _config.yml</h2><h3 id="Hexo-的各种通用的配置都是在博客根目录行下的-config-yml-文件中设置的。下面介绍一些常用的配置项："><a href="#Hexo-的各种通用的配置都是在博客根目录行下的-config-yml-文件中设置的。下面介绍一些常用的配置项：" class="headerlink" title="Hexo 的各种通用的配置都是在博客根目录行下的 _config.yml 文件中设置的。下面介绍一些常用的配置项："></a>Hexo 的各种通用的配置都是在博客根目录行下的 _config.yml 文件中设置的。下面介绍一些常用的配置项：</h3><a id="more"></a>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Site 基本信息</span></span><br><span class="line">title: Ruikye                      <span class="comment"># 博客标题，如左上角显示</span></span><br><span class="line">subtitle: ruikye 的个人博客         <span class="comment"># 博客副标题</span></span><br><span class="line">description: 移动开发技术分享博客     <span class="comment"># 用于搜索引擎搜索到的描述信息</span></span><br><span class="line">author: 零雨の夜                    <span class="comment"># 博客署名，一般会现在在博客的最下方，rg: &amp;copy;2014 零雨の夜</span></span><br><span class="line">email: xxx@xxx.com                <span class="comment"># 可不填</span></span><br><span class="line">language: zh-CN                   <span class="comment"># 让博客支持中文</span></span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment"># Writing</span></span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">highlight:              <span class="comment"># 代码高亮</span></span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span>          <span class="comment"># 开启代码高亮</span></span><br><span class="line">  line_number: <span class="literal">false</span>    <span class="comment"># 是否显示行号</span></span><br><span class="line">  tab_replace: <span class="literal">true</span>     <span class="comment"># 是否替换 tab 为空格</span></span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment"># Pagination</span></span><br><span class="line"><span class="comment">## Set per_page to 0 to disable pagination</span></span><br><span class="line">per_page: 1             <span class="comment"># 文章分页时，每页最多显示文章数，eg: 我的博客在首页和归档页最多只显示一篇文章</span></span><br><span class="line">pagination_dir: page    <span class="comment"># 分页目录</span></span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment"># Extensions</span></span><br><span class="line"><span class="comment">## Plugins: https://github.com/hexojs/hexo/wiki/Plugins</span></span><br><span class="line"><span class="comment">## Themes: https://github.com/hexojs/hexo/wiki/Themes</span></span><br><span class="line">theme: bs-light         <span class="comment"># 这里配置博客的主题风格，主题安装在 themes/ 目录下，这里的值就是主题的文件夹名字 </span></span><br><span class="line">exclude_generator:</span><br><span class="line"></span><br><span class="line">plugins:</span><br><span class="line">- hexo-generator-feed   <span class="comment"># 安装、启用的插件，这里是启动 RSS 订阅的插件</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: http://hexo.io/docs/deployment.html</span></span><br><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: github                                                  <span class="comment"># 博客托管服务器类型</span></span><br><span class="line">  repository: https://github.com/rakkang/rakkang.github.io.git  <span class="comment"># 托管服务器地址</span></span><br><span class="line">  brach: master</span><br></pre></td></tr></table></figure>
+<h3 id="除了-Hexo-的通用配置外，每个主题还有各自的配置文件，主题的配置文件放在：themes-xxx-config-yml-eg-themes-bs-light-config-yml，下面以-bs-light-为例："><a href="#除了-Hexo-的通用配置外，每个主题还有各自的配置文件，主题的配置文件放在：themes-xxx-config-yml-eg-themes-bs-light-config-yml，下面以-bs-light-为例：" class="headerlink" title="除了 Hexo 的通用配置外，每个主题还有各自的配置文件，主题的配置文件放在：themes/[xxx]/_config.yml, eg: themes/bs-light/_config.yml，下面以 bs-light 为例："></a>除了 Hexo 的通用配置外，每个主题还有各自的配置文件，主题的配置文件放在：themes/[xxx]/_config.yml, eg: themes/bs-light/_config.yml，下面以 bs-light 为例：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导航栏，如右上角的显示，Tips: RSS 栏是插件添加的不再这里</span></span><br><span class="line">menu:</span><br><span class="line">  首页: /                 <span class="comment"># 格式是：[显示标签]:[索引目录]</span></span><br><span class="line">  存档: /archives</span><br><span class="line"></span><br><span class="line"><span class="comment"># 文章右边的小部件</span></span><br><span class="line">widgets:</span><br><span class="line"><span class="comment"># search/tag/category/recent_posts/tagcloud   ----&gt; 这里是 bs-light 的可用小部件</span></span><br><span class="line">- search                 <span class="comment"># 搜索框</span></span><br><span class="line">- recent_posts           <span class="comment"># 最近发布的文章</span></span><br><span class="line">- category               <span class="comment"># 存档目录</span></span><br><span class="line">- tagcloud               <span class="comment"># 文章的标签集合</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果在文章的 *.md 中使用 &lt;!-- more --&gt;，那么之后的内容不会在首页显示，而是显示 阅读全文 的链接，显示可以更改</span></span><br><span class="line"><span class="comment"># 如：更多，查看原文等</span></span><br><span class="line">excerpt_link: 阅读全文</span><br><span class="line"></span><br><span class="line"><span class="comment"># 博客的社交分享，eg: 博客底部的两个图标</span></span><br><span class="line">social:</span><br><span class="line"><span class="comment"># key weibo/twitter/google/github/stackoverflow/rss</span></span><br><span class="line"><span class="comment"># value url</span></span><br><span class="line"><span class="comment"># e.g github: https://github.com/DaiXiang</span></span><br><span class="line">  github: https://github.com/rakkang</span><br><span class="line">  rss: /atom.xml</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">cnzz_analytics: <span class="literal">true</span>     <span class="comment"># 博客的访问统计，这里使用 CNZZ 的统计</span></span><br><span class="line"><span class="comment"># google_analytics:</span></span><br><span class="line"><span class="comment"># rss:</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># comment_provider:      # 评论功能，一般使用国内的 多说评论</span></span><br><span class="line"><span class="comment"># Facebook comment</span></span><br></pre></td></tr></table></figure>
+<h2 id="为文章添加-Tag、Category-属性"><a href="#为文章添加-Tag、Category-属性" class="headerlink" title="为文章添加 Tag、Category 属性"></a>为文章添加 Tag、Category 属性</h2><h3 id="通常，使用下面命令新建的文章模版时，会在文章模版的头部出现一些属性信息："><a href="#通常，使用下面命令新建的文章模版时，会在文章模版的头部出现一些属性信息：" class="headerlink" title="通常，使用下面命令新建的文章模版时，会在文章模版的头部出现一些属性信息："></a>通常，使用下面命令新建的文章模版时，会在文章模版的头部出现一些属性信息：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new post <span class="string">"a new article"</span></span><br></pre></td></tr></table></figure>
+<h3 id="文章模版的属性信息："><a href="#文章模版的属性信息：" class="headerlink" title="文章模版的属性信息："></a>文章模版的属性信息：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">title: Hexo 搭建个人博客 · 进阶篇    <span class="comment"># 文章显示标题</span></span><br><span class="line">date: 2014-08-30 13:07:26         <span class="comment"># 文章创建日期</span></span><br><span class="line">tags: hexo                        <span class="comment"># Tag 属性，如果多个 Tag 使用：[Tag 1, Tag 2 ...]</span></span><br><span class="line">categories: hexo                  <span class="comment"># Category 属性，多个时使用：[Category 1, ...]；默认是没有这个的，下面有介绍</span></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<h3 id="在模版中添加-Categories-属性，在博客根目录下-scaffolds-文件夹中有各种文章类型的模版，比如在：scaffolds-post-md-中："><a href="#在模版中添加-Categories-属性，在博客根目录下-scaffolds-文件夹中有各种文章类型的模版，比如在：scaffolds-post-md-中：" class="headerlink" title="在模版中添加 Categories 属性，在博客根目录下 scaffolds/ 文件夹中有各种文章类型的模版，比如在：scaffolds/post.md 中："></a>在模版中添加 Categories 属性，在博客根目录下 scaffolds/ 文件夹中有各种文章类型的模版，比如在：scaffolds/post.md 中：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">title: title</span><br><span class="line">date: date</span><br><span class="line">tags:</span><br><span class="line">categories:                       <span class="comment"># 在这里添加 Category 属性，如果要修改其他的模版，同样的修改方式</span></span><br></pre></td></tr></table></figure>
+<h2 id="添加多说评论"><a href="#添加多说评论" class="headerlink" title="添加多说评论"></a>添加多说评论</h2><h3 id="Hexo-默认使用的-Facebook-的评论代码，在天朝由于众所周知的原因，不能使用。这里介绍使用过年的多说评论：多说官网：http-duoshuo-com-现在多少网址注册，按流程拿到代码："><a href="#Hexo-默认使用的-Facebook-的评论代码，在天朝由于众所周知的原因，不能使用。这里介绍使用过年的多说评论：多说官网：http-duoshuo-com-现在多少网址注册，按流程拿到代码：" class="headerlink" title="Hexo 默认使用的 Facebook 的评论代码，在天朝由于众所周知的原因，不能使用。这里介绍使用过年的多说评论：多说官网：http://duoshuo.com/, 现在多少网址注册，按流程拿到代码："></a>Hexo 默认使用的 Facebook 的评论代码，在天朝由于众所周知的原因，不能使用。这里介绍使用过年的多说评论：多说官网：<a href="http://duoshuo.com/" target="_blank" rel="external">http://duoshuo.com/</a>, 现在多少网址注册，按流程拿到代码：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 多说评论框 start --&gt;</span><br><span class="line">&lt;div class=<span class="string">"ds-thread"</span> </span><br><span class="line">     data-thread-key=<span class="string">"请将此处替换成文章在你的站点中的ID"</span> </span><br><span class="line">     data-title=<span class="string">"请替换成文章的标题"</span> </span><br><span class="line">     data-url=<span class="string">"请替换成文章的网址"</span>&gt;&lt;/div&gt;</span><br><span class="line">&lt;!-- 多说评论框 end --&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&gt;</span><br><span class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">var duoshuoQuery = &#123;short_name:<span class="string">"ruikye"</span>&#125;;</span><br><span class="line">    (<span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">        var ds = document.createElement(<span class="string">'script'</span>);</span><br><span class="line">        ds.type = <span class="string">'text/javascript'</span>;ds.async = <span class="literal">true</span>;</span><br><span class="line">        ds.src = (document.location.protocol == <span class="string">'https:'</span> ? </span><br><span class="line">                    <span class="string">'https:'</span> : <span class="string">'http:'</span>) + <span class="string">'//static.duoshuo.com/embed.js'</span>;</span><br><span class="line">        ds.charset = <span class="string">'UTF-8'</span>;</span><br><span class="line">        (document.getElementsByTagName(<span class="string">'head'</span>)[0] </span><br><span class="line">         || document.getElementsByTagName(<span class="string">'body'</span>)[0]).appendChild(ds);</span><br><span class="line">    &#125;)();</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;!-- 多说公共JS代码 end --&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="首先，打开-themes-xxx-layout-partial-article-ejs-文件，在最后面添加多说评论框："><a href="#首先，打开-themes-xxx-layout-partial-article-ejs-文件，在最后面添加多说评论框：" class="headerlink" title="首先，打开 themes/[xxx]/layout/_partial/article.ejs 文件，在最后面添加多说评论框："></a>首先，打开 themes/[xxx]/layout/_partial/article.ejs 文件，在最后面添加多说评论框：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (page.comments)&#123; %&gt;</span><br><span class="line">    &lt;!-- 多说评论框 start --&gt;</span><br><span class="line">    ...</span><br><span class="line">    &lt;!-- 多说评论框 end --&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="然后，打开-themes-xxx-layout-partial-after-footer-ejs-文件，在最后添加多说-JS-脚本代码："><a href="#然后，打开-themes-xxx-layout-partial-after-footer-ejs-文件，在最后添加多说-JS-脚本代码：" class="headerlink" title="然后，打开 themes/[xxx]/layout/_partial/after_footer.ejs 文件，在最后添加多说 JS 脚本代码："></a>然后，打开 themes/[xxx]/layout/_partial/after_footer.ejs 文件，在最后添加多说 JS 脚本代码：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&gt;</span><br><span class="line">...</span><br><span class="line">&lt;!-- 多说公共JS代码 end --&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="这样多说评论就添加好了，点击文章的标题，在打开的页面下方就会出现多说的评论框。"><a href="#这样多说评论就添加好了，点击文章的标题，在打开的页面下方就会出现多说的评论框。" class="headerlink" title="这样多说评论就添加好了，点击文章的标题，在打开的页面下方就会出现多说的评论框。"></a>这样多说评论就添加好了，点击文章的标题，在打开的页面下方就会出现多说的评论框。</h3><h2 id="添加百度分享"><a href="#添加百度分享" class="headerlink" title="添加百度分享"></a>添加百度分享</h2><h3 id="同样，使用百度分享要先到百度分享官网：http-share-baidu-com-按照流程获取-JS-脚本代码。打开-themes-xxx-layout-partial-post-share-ejs，删除文件内容，用获取到的百度分享代码替换："><a href="#同样，使用百度分享要先到百度分享官网：http-share-baidu-com-按照流程获取-JS-脚本代码。打开-themes-xxx-layout-partial-post-share-ejs，删除文件内容，用获取到的百度分享代码替换：" class="headerlink" title="同样，使用百度分享要先到百度分享官网：http://share.baidu.com/ 按照流程获取 JS 脚本代码。打开 themes/[xxx]/layout/_partial/post/share.ejs，删除文件内容，用获取到的百度分享代码替换："></a>同样，使用百度分享要先到百度分享官网：<a href="http://share.baidu.com/" target="_blank" rel="external">http://share.baidu.com/</a> 按照流程获取 JS 脚本代码。打开 themes/[xxx]/layout/_partial/post/share.ejs，删除文件内容，用获取到的百度分享代码替换：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=<span class="string">"bdsharebuttonbox"</span>&gt;</span><br><span class="line">    &lt;a href=<span class="string">"#"</span> class=<span class="string">"bds_more"</span> data-cmd=<span class="string">"more"</span>&gt;</span><br><span class="line">    &lt;/a&gt;</span><br><span class="line">    &lt;a href=<span class="string">"#"</span> class=<span class="string">"bds_qzone"</span> data-cmd=<span class="string">"qzone"</span> title=<span class="string">"分享到QQ空间"</span>&gt;</span><br><span class="line">    &lt;/a&gt;</span><br><span class="line">    &lt;a href=<span class="string">"#"</span> class=<span class="string">"bds_tsina"</span> data-cmd=<span class="string">"tsina"</span> title=<span class="string">"分享到新浪微博"</span>&gt;</span><br><span class="line">    &lt;/a&gt;</span><br><span class="line">    &lt;a href=<span class="string">"#"</span> class=<span class="string">"bds_tqq"</span> data-cmd=<span class="string">"tqq"</span> title=<span class="string">"分享到腾讯微博"</span>&gt;</span><br><span class="line">    &lt;/a&gt;</span><br><span class="line">    &lt;a href=<span class="string">"#"</span> class=<span class="string">"bds_renren"</span> data-cmd=<span class="string">"renren"</span> title=<span class="string">"分享到人人网"</span>&gt;</span><br><span class="line">    &lt;/a&gt;</span><br><span class="line">    &lt;a href=<span class="string">"#"</span> class=<span class="string">"bds_weixin"</span> data-cmd=<span class="string">"weixin"</span> title=<span class="string">"分享到微信"</span>&gt;</span><br><span class="line">    &lt;/a&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    window._bd_share_config = &#123;</span><br><span class="line">        <span class="string">"common"</span>: &#123;</span><br><span class="line">            <span class="string">"bdSnsKey"</span>: &#123;&#125;,</span><br><span class="line">            <span class="string">"bdText"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"bdMini"</span>: <span class="string">"1"</span>,</span><br><span class="line">            <span class="string">"bdMiniList"</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="string">"bdPic"</span>: <span class="string">""</span>,</span><br><span class="line">            <span class="string">"bdStyle"</span>: <span class="string">"1"</span>,</span><br><span class="line">            <span class="string">"bdSize"</span>: <span class="string">"16"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="string">"share"</span>: &#123;&#125;,</span><br><span class="line">        <span class="string">"image"</span>: &#123;</span><br><span class="line">            <span class="string">"viewList"</span>: [<span class="string">"qzone"</span>, <span class="string">"tsina"</span>, <span class="string">"tqq"</span>, <span class="string">"renren"</span>, <span class="string">"weixin"</span>],</span><br><span class="line">            <span class="string">"viewText"</span>: <span class="string">"分享到："</span>,</span><br><span class="line">            <span class="string">"viewSize"</span>: <span class="string">"16"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    with(document) 0[(getElementsByTagName(<span class="string">'head'</span>)[0] || body).appendChild(createElement(<span class="string">'script'</span>)).src = </span><br><span class="line">            <span class="string">'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='</span> </span><br><span class="line">                    + ~ ( - new Date() / 36e5)];</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="安装-RSS-插件"><a href="#安装-RSS-插件" class="headerlink" title="安装 RSS 插件"></a>安装 RSS 插件</h2><h3 id="RSS-插件要依赖-Node-js-安装，进入博客的本目了，执行命令："><a href="#RSS-插件要依赖-Node-js-安装，进入博客的本目了，执行命令：" class="headerlink" title="RSS 插件要依赖 Node.js 安装，进入博客的本目了，执行命令："></a>RSS 插件要依赖 Node.js 安装，进入博客的本目了，执行命令：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-generator-feed --save</span><br></pre></td></tr></table></figure>
+<h3 id="安装之后，可以在通用的-config-yml-文件中配置插件："><a href="#安装之后，可以在通用的-config-yml-文件中配置插件：" class="headerlink" title="安装之后，可以在通用的 _config.yml 文件中配置插件："></a>安装之后，可以在通用的 _config.yml 文件中配置插件：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">feed:</span><br><span class="line">    <span class="built_in">type</span>: atom</span><br><span class="line">    path: atom.xml</span><br><span class="line">    <span class="built_in">limit</span>: 20</span><br></pre></td></tr></table></figure>
+<h2 id="安装-Sitemap"><a href="#安装-Sitemap" class="headerlink" title="安装 Sitemap"></a>安装 Sitemap</h2><h3 id="Sitemap-是搜索引擎抓取网站要用到的，安装命令："><a href="#Sitemap-是搜索引擎抓取网站要用到的，安装命令：" class="headerlink" title="Sitemap 是搜索引擎抓取网站要用到的，安装命令："></a>Sitemap 是搜索引擎抓取网站要用到的，安装命令：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-generator-sitemap --save</span><br></pre></td></tr></table></figure>
+<h3 id="可选配置："><a href="#可选配置：" class="headerlink" title="可选配置："></a>可选配置：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sitemap:</span><br><span class="line">    path: sitemap.xml</span><br></pre></td></tr></table></figure>
+<h3 id="按上面的配置之后，你的博客立马变得功能丰富了很多有木有～～～"><a href="#按上面的配置之后，你的博客立马变得功能丰富了很多有木有～～～" class="headerlink" title="按上面的配置之后，你的博客立马变得功能丰富了很多有木有～～～"></a>按上面的配置之后，你的博客立马变得功能丰富了很多有木有～～～</h3><p>转载自 : <a href="http://ruikye.com/2014/08/30/Hexo-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%C2%B7-%E8%BF%9B%E9%98%B6%E7%AF%87/" target="_blank" rel="external">零雨の夜-Hexo 搭建个人博客 · 进阶篇</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/04/22/test/">Hexo 搭建个人博客</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 ChenDiDi 的个人博客">ChenDiDi</a></p>
+        <p><span>发布时间:</span>2016年04月22日 - 13时38分</p>
+        <p><span>最后更新:</span>2016年05月02日 - 14时44分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/04/22/test/" title="Hexo 搭建个人博客">http://chendidi.rocks/2016/04/22/test/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://chendidi.rocks/2016/04/22/test/　　作者: ChenDiDi" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2016/05/02/Hiberbate/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Hibernate 中 list() 和iterate()的区别
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Hexo-配置文件-config-yml"><span class="toc-number">1.</span> <span class="toc-text">Hexo 配置文件 _config.yml</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Hexo-的各种通用的配置都是在博客根目录行下的-config-yml-文件中设置的。下面介绍一些常用的配置项："><span class="toc-number">1.1.</span> <span class="toc-text">Hexo 的各种通用的配置都是在博客根目录行下的 _config.yml 文件中设置的。下面介绍一些常用的配置项：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#除了-Hexo-的通用配置外，每个主题还有各自的配置文件，主题的配置文件放在：themes-xxx-config-yml-eg-themes-bs-light-config-yml，下面以-bs-light-为例："><span class="toc-number">1.2.</span> <span class="toc-text">除了 Hexo 的通用配置外，每个主题还有各自的配置文件，主题的配置文件放在：themes/[xxx]/_config.yml, eg: themes/bs-light/_config.yml，下面以 bs-light 为例：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为文章添加-Tag、Category-属性"><span class="toc-number">2.</span> <span class="toc-text">为文章添加 Tag、Category 属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#通常，使用下面命令新建的文章模版时，会在文章模版的头部出现一些属性信息："><span class="toc-number">2.1.</span> <span class="toc-text">通常，使用下面命令新建的文章模版时，会在文章模版的头部出现一些属性信息：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文章模版的属性信息："><span class="toc-number">2.2.</span> <span class="toc-text">文章模版的属性信息：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在模版中添加-Categories-属性，在博客根目录下-scaffolds-文件夹中有各种文章类型的模版，比如在：scaffolds-post-md-中："><span class="toc-number">2.3.</span> <span class="toc-text">在模版中添加 Categories 属性，在博客根目录下 scaffolds/ 文件夹中有各种文章类型的模版，比如在：scaffolds/post.md 中：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#添加多说评论"><span class="toc-number">3.</span> <span class="toc-text">添加多说评论</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Hexo-默认使用的-Facebook-的评论代码，在天朝由于众所周知的原因，不能使用。这里介绍使用过年的多说评论：多说官网：http-duoshuo-com-现在多少网址注册，按流程拿到代码："><span class="toc-number">3.1.</span> <span class="toc-text">Hexo 默认使用的 Facebook 的评论代码，在天朝由于众所周知的原因，不能使用。这里介绍使用过年的多说评论：多说官网：http://duoshuo.com/, 现在多少网址注册，按流程拿到代码：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#首先，打开-themes-xxx-layout-partial-article-ejs-文件，在最后面添加多说评论框："><span class="toc-number">3.2.</span> <span class="toc-text">首先，打开 themes/[xxx]/layout/_partial/article.ejs 文件，在最后面添加多说评论框：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#然后，打开-themes-xxx-layout-partial-after-footer-ejs-文件，在最后添加多说-JS-脚本代码："><span class="toc-number">3.3.</span> <span class="toc-text">然后，打开 themes/[xxx]/layout/_partial/after_footer.ejs 文件，在最后添加多说 JS 脚本代码：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#这样多说评论就添加好了，点击文章的标题，在打开的页面下方就会出现多说的评论框。"><span class="toc-number">3.4.</span> <span class="toc-text">这样多说评论就添加好了，点击文章的标题，在打开的页面下方就会出现多说的评论框。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#添加百度分享"><span class="toc-number">4.</span> <span class="toc-text">添加百度分享</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#同样，使用百度分享要先到百度分享官网：http-share-baidu-com-按照流程获取-JS-脚本代码。打开-themes-xxx-layout-partial-post-share-ejs，删除文件内容，用获取到的百度分享代码替换："><span class="toc-number">4.1.</span> <span class="toc-text">同样，使用百度分享要先到百度分享官网：http://share.baidu.com/ 按照流程获取 JS 脚本代码。打开 themes/[xxx]/layout/_partial/post/share.ejs，删除文件内容，用获取到的百度分享代码替换：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装-RSS-插件"><span class="toc-number">5.</span> <span class="toc-text">安装 RSS 插件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RSS-插件要依赖-Node-js-安装，进入博客的本目了，执行命令："><span class="toc-number">5.1.</span> <span class="toc-text">RSS 插件要依赖 Node.js 安装，进入博客的本目了，执行命令：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装之后，可以在通用的-config-yml-文件中配置插件："><span class="toc-number">5.2.</span> <span class="toc-text">安装之后，可以在通用的 _config.yml 文件中配置插件：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装-Sitemap"><span class="toc-number">6.</span> <span class="toc-text">安装 Sitemap</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Sitemap-是搜索引擎抓取网站要用到的，安装命令："><span class="toc-number">6.1.</span> <span class="toc-text">Sitemap 是搜索引擎抓取网站要用到的，安装命令：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可选配置："><span class="toc-number">6.2.</span> <span class="toc-text">可选配置：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#按上面的配置之后，你的博客立马变得功能丰富了很多有木有～～～"><span class="toc-number">6.3.</span> <span class="toc-text">按上面的配置之后，你的博客立马变得功能丰富了很多有木有～～～</span></a></li></ol></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2016/04/22/test/" data-title="Hexo 搭建个人博客" data-url="http://chendidi.rocks/2016/04/22/test/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"http://chendidi.duoshuo.com"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/05/02/Hiberbate/" title="上一篇: Hibernate 中 list() 和iterate()的区别">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/06/12/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/18/ssh-spring1/">SSH框架搭建心得</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/04/xml-dtd/">XML --dtd相关知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/02/Hiberbate/">Hibernate 中 list() 和iterate()的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/22/test/">Hexo 搭建个人博客</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2016 ChenDiDi
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >外星访客: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 11;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+    <script type="text/javascript">
+      window.onload = function(){
+        document.getElementById("search").onclick = function(){
+            console.log("search")
+            search();
+        }
+      }
+      function search(){
+        (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+        (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+        })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+        _st('install','A1Pz-LKMXbrzcFg2FWi6','2.0.0');
+      }
+    </script>
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"chendidi"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+  </div>
+</body>
+</html>
