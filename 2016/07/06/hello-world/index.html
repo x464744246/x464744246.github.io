@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hibernate 中 list() 和iterate()的区别 | ChenDiDi&#39;s Blog</title>
+  <title>Hello World | ChenDiDi&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Hibernate 中 Query 的 list() 和iterate() 方法的区别">
+  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hibernate 中 list() 和iterate()的区别">
-<meta property="og:url" content="http://chendidi.rocks/2016/05/02/Hiberbate/index.html">
+<meta property="og:title" content="Hello World">
+<meta property="og:url" content="http://chendidi.rocks/2016/07/06/hello-world/index.html">
 <meta property="og:site_name" content="ChenDiDi's Blog">
-<meta property="og:description" content="Hibernate 中 Query 的 list() 和iterate() 方法的区别">
-<meta property="og:updated_time" content="2016-05-02T06:58:26.341Z">
+<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta property="og:updated_time" content="2016-04-22T07:27:26.224Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hibernate 中 list() 和iterate()的区别">
-<meta name="twitter:description" content="Hibernate 中 Query 的 list() 和iterate() 方法的区别">
+<meta name="twitter:title" content="Hello World">
+<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
   
     <link rel="alternative" href="/atom.xml" title="ChenDiDi&#39;s Blog" type="application/atom+xml">
   
@@ -235,11 +235,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-Hiberbate" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/05/02/Hiberbate/" class="article-date">
-      <time datetime="2016-05-02T06:23:40.000Z" itemprop="datePublished">2016-05-02</time>
+      <a href="/2016/07/06/hello-world/" class="article-date">
+      <time datetime="2016-07-06T11:53:51.618Z" itemprop="datePublished">2016-07-06</time>
 </a>
     </div>
   
@@ -252,7 +252,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Hibernate 中 list() 和iterate()的区别
+      Hello World
     </h1>
   
 
@@ -260,16 +260,8 @@
       
       <div class="article-info article-info-post">
         
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Hibernate/">Hibernate</a>
-    </div>
-
 
         
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaEE/">JavaEE</a></li></ul>
-    </div>
-
         <div class="clearfix"></div>
       </div>
       
@@ -277,10 +269,16 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="Hibernate-中-Query-的-list-和iterate-方法的区别"><a href="#Hibernate-中-Query-的-list-和iterate-方法的区别" class="headerlink" title="Hibernate 中 Query 的 list() 和iterate() 方法的区别"></a>Hibernate 中 Query 的 list() 和iterate() 方法的区别</h3><a id="more"></a>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public Iterator findById(Integer id) throws HibernateException &#123;</span><br><span class="line">	StringBuffer str = new StringBuffer();</span><br><span class="line">	str.append(<span class="string">"SELECT * FROM test_user where id = "</span>);</span><br><span class="line">	str.append(id);</span><br><span class="line">	Query query = session.createQuery(str.toString());</span><br><span class="line">	Iterator it = query.iterate();</span><br><span class="line">	<span class="built_in">return</span> it;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="首先，上面的代码中-query返回的类型不一样，list-返回List-iterate-返回Iterator。同时，这两个方法获取数据的方式不一样，list-会直接查数据库-iterate-会先到数据库中把id都取出来，然后真正要遍历某个对象的时候先到缓存中找-如果找不到-以id为条件再发一条sql到数据库-这样如果缓存中没有数据-则查询数据库的次数为n-1。-然后，iterate会查询2级缓存，-list只会查询一级缓存。其次，list-中返回的List中每个对象都是原本的对象-iterate-中返回的对象是代理对象"><a href="#首先，上面的代码中-query返回的类型不一样，list-返回List-iterate-返回Iterator。同时，这两个方法获取数据的方式不一样，list-会直接查数据库-iterate-会先到数据库中把id都取出来，然后真正要遍历某个对象的时候先到缓存中找-如果找不到-以id为条件再发一条sql到数据库-这样如果缓存中没有数据-则查询数据库的次数为n-1。-然后，iterate会查询2级缓存，-list只会查询一级缓存。其次，list-中返回的List中每个对象都是原本的对象-iterate-中返回的对象是代理对象" class="headerlink" title="首先，上面的代码中 query返回的类型不一样，list()返回List,iterate()返回Iterator。同时，这两个方法获取数据的方式不一样，list()会直接查数据库,iterate()会先到数据库中把id都取出来，然后真正要遍历某个对象的时候先到缓存中找,如果找不到,以id为条件再发一条sql到数据库,这样如果缓存中没有数据,则查询数据库的次数为n+1。 然后，iterate会查询2级缓存，　list只会查询一级缓存。其次，list()中返回的List中每个对象都是原本的对象,iterate()中返回的对象是代理对象."></a>首先，上面的代码中 query返回的类型不一样，list()返回List,iterate()返回Iterator。同时，这两个方法获取数据的方式不一样，list()会直接查数据库,iterate()会先到数据库中把id都取出来，然后真正要遍历某个对象的时候先到缓存中找,如果找不到,以id为条件再发一条sql到数据库,这样如果缓存中没有数据,则查询数据库的次数为n+1。 然后，iterate会查询2级缓存，　list只会查询一级缓存。其次，list()中返回的List中每个对象都是原本的对象,iterate()中返回的对象是代理对象.</h3><h2 id="遍历list元素，用iterator-，再while-hasNext-next（）有什么好处"><a href="#遍历list元素，用iterator-，再while-hasNext-next（）有什么好处" class="headerlink" title="遍历list元素，用iterator()，再while(hasNext()),next（）有什么好处"></a>遍历list元素，用iterator()，再while(hasNext()),next（）有什么好处</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   static void <span class="function"><span class="title">listAllContacts</span></span>()&#123;</span><br><span class="line">	Session session = HibernateUtil.getSessionFactory().getCurrentSession();</span><br><span class="line">	session.beginTransaction();</span><br><span class="line">	List list = session.createQuery(<span class="string">"from Contact"</span>).list();</span><br><span class="line">	Iterator iterator = list.iterator();</span><br><span class="line">       </span><br><span class="line">       <span class="keyword">for</span>(int i=0;i&lt;list.size();i++)&#123;</span><br><span class="line">           Contact contact = (Contact) list.get(i);</span><br><span class="line">           Test2.displayContact(contact);</span><br><span class="line">       &#125;</span><br><span class="line">       </span><br><span class="line">	<span class="keyword">while</span>(iterator.hasNext())&#123;</span><br><span class="line">		Contact contact = (Contact) iterator.next();</span><br><span class="line">		Test2.displayContact(contact);</span><br><span class="line">	&#125;</span><br><span class="line">       </span><br><span class="line">	session.getTransaction().commit();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="list的方法依赖于具体实现，不是松耦合，比如以后你的代码改了，list不在是list接口了，而是set接口（没有get-i-方法），然后根据网上的说法-Iterator-it-list-iterator-这样的用法一般在jdk-1-5以前使用。最好的做法的是："><a href="#list的方法依赖于具体实现，不是松耦合，比如以后你的代码改了，list不在是list接口了，而是set接口（没有get-i-方法），然后根据网上的说法-Iterator-it-list-iterator-这样的用法一般在jdk-1-5以前使用。最好的做法的是：" class="headerlink" title="list的方法依赖于具体实现，不是松耦合，比如以后你的代码改了，list不在是list接口了，而是set接口（没有get(i)方法），然后根据网上的说法 Iterator it = list.iterator(); 这样的用法一般在jdk 1.5以前使用。最好的做法的是："></a>list的方法依赖于具体实现，不是松耦合，比如以后你的代码改了，list不在是list接口了，而是set接口（没有get(i)方法），然后根据网上的说法 Iterator it = list.iterator(); 这样的用法一般在jdk 1.5以前使用。最好的做法的是：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">List &lt;String&gt; list = new ArrayList &lt;String&gt;();  </span><br><span class="line"><span class="keyword">for</span> (String s:list) &#123;  </span><br><span class="line">System.out.println(s);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.<br><a id="more"></a></p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+
       
     </div>
     
@@ -288,13 +286,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/05/02/Hiberbate/">Hibernate 中 list() 和iterate()的区别</a></p>
+        <p><span>本文标题:</span><a href="/2016/07/06/hello-world/">Hello World</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 ChenDiDi 的个人博客">ChenDiDi</a></p>
-        <p><span>发布时间:</span>2016年05月02日 - 14时23分</p>
-        <p><span>最后更新:</span>2016年05月02日 - 14时58分</p>
+        <p><span>发布时间:</span>2016年07月06日 - 19时53分</p>
+        <p><span>最后更新:</span>2016年04月22日 - 15时27分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/05/02/Hiberbate/" title="Hibernate 中 list() 和iterate()的区别">http://chendidi.rocks/2016/05/02/Hiberbate/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://chendidi.rocks/2016/05/02/Hiberbate/　　作者: ChenDiDi" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/07/06/hello-world/" title="Hello World">http://chendidi.rocks/2016/07/06/hello-world/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://chendidi.rocks/2016/07/06/hello-world/　　作者: ChenDiDi" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -307,18 +305,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2016/05/04/xml-dtd/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          XML --dtd相关知识
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/04/22/test/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hexo 搭建个人博客</div>
+    <a href="/2016/05/18/ssh-spring1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SSH框架搭建心得</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -329,7 +318,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Hibernate-中-Query-的-list-和iterate-方法的区别"><span class="toc-number">1.</span> <span class="toc-text">Hibernate 中 Query 的 list() 和iterate() 方法的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#首先，上面的代码中-query返回的类型不一样，list-返回List-iterate-返回Iterator。同时，这两个方法获取数据的方式不一样，list-会直接查数据库-iterate-会先到数据库中把id都取出来，然后真正要遍历某个对象的时候先到缓存中找-如果找不到-以id为条件再发一条sql到数据库-这样如果缓存中没有数据-则查询数据库的次数为n-1。-然后，iterate会查询2级缓存，-list只会查询一级缓存。其次，list-中返回的List中每个对象都是原本的对象-iterate-中返回的对象是代理对象"><span class="toc-number">2.</span> <span class="toc-text">首先，上面的代码中 query返回的类型不一样，list()返回List,iterate()返回Iterator。同时，这两个方法获取数据的方式不一样，list()会直接查数据库,iterate()会先到数据库中把id都取出来，然后真正要遍历某个对象的时候先到缓存中找,如果找不到,以id为条件再发一条sql到数据库,这样如果缓存中没有数据,则查询数据库的次数为n+1。 然后，iterate会查询2级缓存，　list只会查询一级缓存。其次，list()中返回的List中每个对象都是原本的对象,iterate()中返回的对象是代理对象.</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#遍历list元素，用iterator-，再while-hasNext-next（）有什么好处"><span class="toc-number"></span> <span class="toc-text">遍历list元素，用iterator()，再while(hasNext()),next（）有什么好处</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#list的方法依赖于具体实现，不是松耦合，比如以后你的代码改了，list不在是list接口了，而是set接口（没有get-i-方法），然后根据网上的说法-Iterator-it-list-iterator-这样的用法一般在jdk-1-5以前使用。最好的做法的是："><span class="toc-number">1.</span> <span class="toc-text">list的方法依赖于具体实现，不是松耦合，比如以后你的代码改了，list不在是list接口了，而是set接口（没有get(i)方法），然后根据网上的说法 Iterator it = list.iterator(); 这样的用法一般在jdk 1.5以前使用。最好的做法的是：</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -391,7 +380,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/05/02/Hiberbate/" data-title="Hibernate 中 list() 和iterate()的区别" data-url="http://chendidi.rocks/2016/05/02/Hiberbate/"></div>
+    <div class="ds-thread" data-thread-key="2016/07/06/hello-world/" data-title="Hello World" data-url="http://chendidi.rocks/2016/07/06/hello-world/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -414,13 +403,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/05/04/xml-dtd/" title="上一篇: XML --dtd相关知识">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2016/04/22/test/" title="下一篇: Hexo 搭建个人博客">
+            <a href="/2016/05/18/ssh-spring1/" title="下一篇: SSH框架搭建心得">
                 <i class="fa fa-angle-right"></i>
             </a>
         
